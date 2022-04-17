@@ -1,9 +1,17 @@
 import { Router } from "express";
 import * as cardsController from "../controllers/cardsController.js";
+import valideAPIKeyMiddleware from "../middlewares/valideAPIKeyMiddleware.js";
+import validateSchemaMiddleware from "../middlewares/valideSchemaMiddleware.js";
+import cardsSchema from "../schemas/cardsSchemas.js";
 
 const cardsRouter = Router();
 
-cardsRouter.post("/cards", cardsController.createNewCard);
+cardsRouter.post(
+  "/cards",
+  valideAPIKeyMiddleware,
+  validateSchemaMiddleware(cardsSchema.newCard),
+  cardsController.createNewCard
+);
 cardsRouter.patch("/cards/:id/activate", cardsController.activateNewCard);
 cardsRouter.patch("/cards/:id/block", cardsController.blockCard);
 cardsRouter.patch("/cards/:id/desblock", cardsController.desblockCard);

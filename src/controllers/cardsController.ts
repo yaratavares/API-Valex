@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
+import createCardService from "../services/createCardSevice.js";
 
 export async function createNewCard(req: Request, res: Response) {
+  const { employeeId, type } = req.body;
+
+  await createCardService(employeeId, type);
+
   res.sendStatus(201);
 }
 
