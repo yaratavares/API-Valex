@@ -8,5 +8,10 @@ const newCard = joi.object({
     .required(),
 });
 
-const cardsSchema = { newCard };
+const activateCard = joi.object({
+  securityCode: joi.string().required(),
+  password: joi.string().length(4).pattern(/[0-9]/).required(),
+});
+
+const cardsSchema = { newCard, activateCard };
 export default cardsSchema;

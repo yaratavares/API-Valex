@@ -12,7 +12,11 @@ cardsRouter.post(
   validateSchemaMiddleware(cardsSchema.newCard),
   cardsController.createNewCard
 );
-cardsRouter.patch("/cards/:id/activate", cardsController.activateNewCard);
+cardsRouter.patch(
+  "/cards/:id/activate",
+  validateSchemaMiddleware(cardsSchema.activateCard),
+  cardsController.activateNewCard
+);
 cardsRouter.patch("/cards/:id/block", cardsController.blockCard);
 cardsRouter.patch("/cards/:id/desblock", cardsController.desblockCard);
 cardsRouter.get("/cards/:id/transactions", cardsController.getTransactions);
