@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 
 export async function paymentNotVirtual(req: Request, res: Response) {
+  const { id } = req.params;
+
   res.sendStatus(201);
 }
 
