@@ -1,3 +1,10 @@
+import { balanceAmount } from "./microservice/balanceAmount.js";
+import * as cardService from "./microservice/cardService.js";
+
 export default async function transactionService(id: number) {
-  console.log(id);
+  await cardService.verifyCardExist(id);
+
+  const sendObject = await balanceAmount(id);
+
+  return sendObject;
 }

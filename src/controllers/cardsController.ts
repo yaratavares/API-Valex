@@ -23,9 +23,9 @@ export async function activateNewCard(req: Request, res: Response) {
 export async function getTransactions(req: Request, res: Response) {
   const { id } = req.params;
 
-  await transactionService(Number(id));
+  const transactionsAndBalance = await transactionService(Number(id));
 
-  res.sendStatus(200);
+  res.send(transactionsAndBalance);
 }
 
 export async function blockCard(req: Request, res: Response) {

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
-import * as cardRepository from "../repositories/cardRepository.js";
-import * as errors from "../utils/errorUtils.js";
+import * as cardRepository from "../../repositories/cardRepository.js";
+import * as errors from "../../utils/errorUtils.js";
 
 export async function verifyCardExist(cardId: number) {
   const cardExist = await cardRepository.findById(cardId);

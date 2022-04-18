@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 
 import * as cardRepository from "../repositories/cardRepository.js";
-import * as cardService from "../services/cardService.js";
+import * as cardService from "../services/microservice/cardService.js";
 import * as errors from "../utils/errorUtils.js";
 
 export async function activateNewCard(
